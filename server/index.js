@@ -8,7 +8,11 @@ dotenv.config();
 
 app.use(express.json({ limit: "30mb", extended: true }));
 app.use(express.urlencoded({ limit: "30mb", extended: true }));
-app.use(cors());
+app.use(cors({
+    origin: process.env.CLIENT_URL || '*',
+    methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'],
+    credentials: true,
+}));
 import authRoutes from './routes/auth.js';
 import userRoutes from './routes/users.js';
 import questionRoutes from './routes/Questions.js';

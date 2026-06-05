@@ -42,7 +42,7 @@ export const deleteQuestion = async (req, res) => {
     }
 
     try {
-        await Questions.findByIdAndRemove(_id);
+        await Questions.findByIdAndDelete(_id);
         res.status(200).json({ message: "Successfully deleted..." });
     } catch (error) {
         res.status(404).json({ message: error.message });

@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "stack/package.json",
+      "use": "@vercel/next"
+    }
+  ],
+  "routes": [],
+  "env": {
+    "NEXT_PUBLIC_BACKEND_URL": "@backend_url"
+  }
+}

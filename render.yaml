@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: stackoverflow-api
+    runtime: node
+    region: oregon
+    rootDir: server
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: PORT
+        value: 5000
+      - key: MONGODB_URL
+        sync: false # Set this in Render dashboard
+      - key: JWT_SECRET
+        generateValue: true
+      - key: NODE_ENV
+        value: production
