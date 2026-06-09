@@ -274,3 +274,9 @@ Then open **http://localhost:3000** in your browser.
 | Variable | Description | Example |
 |----------|-------------|---------|
 | `NEXT_PUBLIC_BACKEND_URL` | Backend API base URL | `http://localhost:5000` |
+
+---
+
+## 📄 License
+
+This project is for educational purposes — a clone of Stack Overflow to learn full-stack development

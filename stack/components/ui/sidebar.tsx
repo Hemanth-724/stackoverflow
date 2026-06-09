@@ -1,20 +1,27 @@
 "use client";
 
 import Link from "next/link";
-import {
-  Home,
-  MessageSquare,
-  Bot,
-  Tag,
-  Bookmark,
-  Trophy,
-  FileText,
-  Building,
-} from "lucide-react";
-import { Badge } from "@/components/ui/badge";
+import { useRouter } from "next/router";
 import { cn } from "@/lib/utils";
 
 const Sidebar = ({ isOpen }: { isOpen: boolean }) => {
+  const router = useRouter();
+  const currentPath = router.pathname;
+
+  const isActive = (path: string) => {
+    if (path === "/") return currentPath === "/";
+    return currentPath.startsWith(path);
+  };
+
+  const linkClass = (path: string, indented: boolean = false) =>
+    cn(
+      "flex items-center py-2 text-[13px] transition-colors",
+      indented ? "px-2 pl-[30px]" : "px-4",
+      isActive(path)
+        ? "text-[#0f1115] bg-[#f1f2f3] border-r-4 border-[#f48024] font-bold"
+        : "text-[#525960] hover:text-[#0f1115]"
+    );
+
   return (
     <aside
       className={cn(
@@ -27,10 +34,7 @@ const Sidebar = ({ isOpen }: { isOpen: boolean }) => {
 
           {/* Home */}
           <li>
-            <Link
-              href="/"
-              className="flex items-center px-4 py-2 text-[#0f1115] bg-[#f1f2f3] border-r-4 border-[#f48024] font-bold text-[13px]"
-            >
+            <Link href="/" className={linkClass("/")}>
               Home
             </Link>
           </li>
@@ -41,10 +45,7 @@ const Sidebar = ({ isOpen }: { isOpen: boolean }) => {
           
           {/* Questions */}
           <li>
-            <Link
-              href="/questions"
-              className="flex items-center px-2 py-2 text-[#525960] hover:text-[#0f1115] text-[13px]"
-            >
+            <Link href="/questions" className={linkClass("/questions", false)}>
               <svg aria-hidden="true" className="w-[18px] h-[18px] mr-1 opacity-50" width="18" height="18" viewBox="0 0 18 18"><path d="M9.06 3C4 3 1 8 1 8s3 5 8.06 5C14 13 17 8 17 8s-3-5-7.94-5ZM9 11.5a3.5 3.5 0 1 1 0-7 3.5 3.5 0 0 1 0 7Zm0-1.5a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z" fill="currentColor"/></svg>
               Questions
             </Link>
@@ -52,10 +53,7 @@ const Sidebar = ({ isOpen }: { isOpen: boolean }) => {
 
           {/* AI Assist */}
           <li>
-            <Link
-              href="#"
-              className="flex items-center px-2 py-2 pl-[30px] text-[#525960] hover:text-[#0f1115] text-[13px]"
-            >
+            <Link href="/ai-assist" className={linkClass("/ai-assist", true)}>
               AI Assist
               <span className="ml-auto text-[10px] bg-[#f8f9f9] border border-[#d6d9dc] text-[#6a737c] px-1 rounded uppercase tracking-wider font-semibold">
                 labs
@@ -65,40 +63,28 @@ const Sidebar = ({ isOpen }: { isOpen: boolean }) => {
 
           {/* Tags */}
           <li>
-            <Link
-              href="/tags"
-              className="flex items-center px-2 py-2 pl-[30px] text-[#525960] hover:text-[#0f1115] text-[13px]"
-            >
+            <Link href="/tags" className={linkClass("/tags", true)}>
               Tags
             </Link>
           </li>
 
           {/* Users */}
           <li>
-            <Link
-              href="/users"
-              className="flex items-center px-2 py-2 pl-[30px] text-[#525960] hover:text-[#0f1115] text-[13px]"
-            >
+            <Link href="/users" className={linkClass("/users", true)}>
               Users
             </Link>
           </li>
 
           {/* Saves */}
           <li>
-            <Link
-              href="#"
-              className="flex items-center px-2 py-2 pl-[30px] text-[#525960] hover:text-[#0f1115] text-[13px]"
-            >
+            <Link href="/saves" className={linkClass("/saves", true)}>
               Saves
             </Link>
           </li>
 
           {/* Challenges */}
           <li>
-            <Link
-              href="#"
-              className="flex items-center px-2 py-2 pl-[30px] text-[#525960] hover:text-[#0f1115] text-[13px]"
-            >
+            <Link href="/challenges" className={linkClass("/challenges", true)}>
               Challenges
               <span className="ml-auto text-[10px] bg-[#fdf2ea] border border-[#f48024] text-[#d1383d] px-1 rounded uppercase font-semibold">
                 NEW
@@ -108,30 +94,21 @@ const Sidebar = ({ isOpen }: { isOpen: boolean }) => {
 
           {/* Chat */}
           <li>
-            <Link
-              href="#"
-              className="flex items-center px-2 py-2 pl-[30px] text-[#525960] hover:text-[#0f1115] text-[13px]"
-            >
+            <Link href="/chat" className={linkClass("/chat", true)}>
               Chat
             </Link>
           </li>
 
           {/* Articles */}
           <li>
-            <Link
-              href="#"
-              className="flex items-center px-2 py-2 pl-[30px] text-[#525960] hover:text-[#0f1115] text-[13px]"
-            >
+            <Link href="/articles" className={linkClass("/articles", true)}>
               Articles
             </Link>
           </li>
 
           {/* Companies */}
           <li>
-            <Link
-              href="#"
-              className="flex items-center px-2 py-2 pl-[30px] text-[#525960] hover:text-[#0f1115] text-[13px]"
-            >
+            <Link href="/companies" className={linkClass("/companies", true)}>
               Companies
             </Link>
           </li>

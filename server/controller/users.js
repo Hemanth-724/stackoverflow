@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 import User from "../models/auth.js";
+import Questions from "../models/Questions.js";
 
 export const getAllUsers = async (req, res) => {
     try {
@@ -62,5 +63,29 @@ export const updateProfile = async (req, res) => {
         res.status(200).json(updatedProfile);
     } catch (error) {
         res.status(405).json({ message: error.message });
+    }
+};
+
+export const deleteUser = async (req, res) => {
+    const { id: _id } = req.params;
+
+    if (!mongoose.Types.ObjectId.isValid(_id)) {
+        return res.status(404).send("User unavailable...");
+    }
+
+    try {
+        const existingUser = await User.findById(_id);
+        if (!existingUser) {
+            return res.status(404).json({ message: "User not found" });
+        }
+
+        // Delete all questions posted by this user
+        await Questions.deleteMany({ userId: _id });
+
+        // Delete the user
+        await User.findByIdAndDelete(_id);
+        res.status(200).json({ message: "User deleted successfully" });
+    } catch (error) {
+        res.status(500).json({ message: error.message });
     }
 };

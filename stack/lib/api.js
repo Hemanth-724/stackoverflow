@@ -17,3 +17,4 @@ export const deleteAnswer = (id, answerId, noOfAnswers) =>
 export const fetchAllUsers = () => axiosInstance.get("/user/getAllUsers");
 export const getUserById = (id) => axiosInstance.get(`/user/get/${id}`);
 export const updateProfile = (id, updateData) => axiosInstance.patch(`/user/update/${id}`, updateData);
+export const deleteUser = (id) => axiosInstance.delete(`/user/delete/${id}`);

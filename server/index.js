@@ -27,7 +27,7 @@ app.get("/", (req, res) => {
     res.send("Stackoverflow clone is running perfect");
 });
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 8080;
 const databaseurl = process.env.MONGODB_URL;
 
 mongoose.connect(databaseurl)
