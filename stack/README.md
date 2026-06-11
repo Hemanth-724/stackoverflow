@@ -148,7 +148,7 @@ cp .env.example .env
 npm run dev
 ```
 
-The backend will run at **http://localhost:5000**
+The backend will run at **http://localhost:8080**
 
 ### 3. Setup Frontend
 
@@ -161,7 +161,7 @@ npm install
 
 # Create environment file
 cp .env.example .env
-# The default points to http://localhost:5000
+# The default points to http://localhost:8080
 
 # Start the frontend dev server
 npm run dev
@@ -273,7 +273,7 @@ Then open **http://localhost:3000** in your browser.
 
 | Variable | Description | Example |
 |----------|-------------|---------|
-| `NEXT_PUBLIC_BACKEND_URL` | Backend API base URL | `http://localhost:5000` |
+| `NEXT_PUBLIC_BACKEND_URL` | Backend API base URL | `http://localhost:8080` |
 
 ---
 
