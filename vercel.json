@@ -8,6 +8,6 @@
   ],
   "routes": [],
   "env": {
-    "NEXT_PUBLIC_BACKEND_URL": "@backend_url"
+    "NEXT_PUBLIC_BACKEND_URL": "https://stackoverflow-pz7c.onrender.com"
   }
 }
