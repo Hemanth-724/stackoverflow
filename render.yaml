@@ -15,3 +15,5 @@ services:
         generateValue: true
       - key: NODE_ENV
         value: production
+      - key: CLIENT_URL
+        value: https://stackoverflow-yi2x.vercel.app
